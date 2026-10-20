@@ -1,0 +1,267 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+/* --- СТИЛИ ШАПКИ --- */
+.header {
+  background: linear-gradient(180deg, #d30000 0%, #b30000 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 40px;
+  height: 90px;
+}
+
+/* Фиксируем размер логотипа, чтобы он не был гигантским! */
+.header-logo img {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+  display: block;
+}
+
+.header-title {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.header-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.header-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.header-nav a:hover,
+.header-nav a.active {
+  text-decoration: underline;
+}
+
+/* --- ОСНОВНОЙ КОНТЕЙНЕР (Слева меню, Справа товары) --- */
+.main-wrapper {
+  display: flex; /* Выстраивает меню слева, контент справа */
+  min-height: calc(100vh - 90px);
+}
+
+/* --- ЛЕВОЕ КРАСНОЕ МЕНЮ --- */
+.left-sidebar {
+  width: 220px;
+  background-color: #d30000; /* Тот же красный цвет */
+  padding: 30px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex-shrink: 0; /* Меню не сжимается */
+}
+
+.sidebar-btn {
+  display: block;
+  color: #ffffff;            /* ТЕКСТ БЕЛЫЙ, чтобы не сливался! */
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.sidebar-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-btn.active {
+  background-color: #ffffff;
+  color: #d30000;            /* Выделенный пункт становится белым с красным текстом */
+}
+
+/* --- ПРАВАЯ ОБЛАСТЬ С КАРТОЧКАМИ --- */
+.content-area {
+  flex: 1;
+  padding: 30px 40px;
+  display: flex;
+  flex-wrap: wrap;           /* Если карточек много, они перенесутся на новую строчку */
+  align-items: flex-start;
+  gap: 25px;                 /* Аккуратный отступ между карточками */
+  background-color: #f9f9f9;
+}
+
+/* --- КАРТОЧКА ТОВАРА --- */
+.item-card {
+  width: 200px;
+  background: #ffffff;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.item-image {
+  width: 100%;
+  height: 160px;
+  margin-bottom: 10px;
+}
+
+.item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;       /* Картинка не сплющивается */
+  display: block;
+}
+
+.item-title {
+  font-size: 18px;
+  color: #222222;
+  margin-bottom: 6px;
+}
+
+.item-desc {
+  font-size: 13px;
+  color: #666666;
+}
+/* ========================================================
+   МОБИЛЬНАЯ ВЕРСИЯ ДЛЯ COFFEE — TIME (экраны до 768px)
+   ======================================================== */
+@media (max-width: 768px) {
+
+  /* --- 1. ШАПКА НА ТЕЛЕФОНЕ --- */
+  .header {
+    height: auto !important;
+    min-height: auto !important;
+    padding: 12px 16px !important;
+    flex-direction: column !important; /* Ставим элементы шапки друг под другом */
+    gap: 10px !important;
+    text-align: center;
+  }
+
+  .header-logo img,
+  .logo-box img {
+    width: 55px !important;
+    height: 55px !important;
+  }
+
+  .header-title,
+  .site-title {
+    font-size: 24px !important;
+    margin: 0 !important;
+  }
+
+  /* Ссылки навигации в шапке */
+  .nav,
+  .header-nav {
+    display: flex !important;
+    flex-wrap: wrap !important;       /* Переносятся, если не влезают */
+    justify-content: center !important;
+    gap: 12px !important;
+  }
+
+  .nav a,
+  .header-nav a {
+    font-size: 14px !important;
+  }
+
+  /* --- 2. ГЛАВНАЯ СТРАНИЦА (index.html) --- */
+  .main {
+    min-height: calc(100vh - 160px) !important;
+    padding: 30px 15px !important;
+  }
+
+  .hero-brand,
+  .hero-title {
+    font-size: 28px !important;
+    line-height: 1.2 !important;
+  }
+
+  .hero-desc,
+  .hero-text {
+    font-size: 18px !important;
+    padding: 0 10px;
+  }
+
+  .hero-btn {
+    width: 60px !important;
+    height: 36px !important;
+    font-size: 20px !important;
+  }
+
+  /* --- 3. СТРАНИЦА МЕНЮ (pagetwo.html) --- */
+  /* Перестраиваем сайт: меню сверху, товары под ним */
+  .main-wrapper,
+  .catalog-page {
+    flex-direction: column !important;
+    min-height: auto !important;
+  }
+
+  /* Красный сайдбар категорий (Напитки / Фастфуд / Десерты) */
+  .left-sidebar,
+  .sidebar-menu {
+    width: 100% !important;
+    min-height: auto !important;
+    flex-direction: row !important;     /* Кнопки встают в горизонтальный ряд */
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    padding: 12px 10px !important;
+    position: static !important;
+  }
+
+  .sidebar-btn,
+  .sidebar-link {
+    font-size: 14px !important;
+    padding: 8px 14px !important;
+  }
+
+  /* Правая часть с карточками */
+  .content-area,
+  .products-container {
+    width: 100% !important;
+    padding: 20px 15px !important;
+    justify-content: center !important; /* Карточки центрируются */
+    gap: 15px !important;
+  }
+
+  /* Карточка стаканчика Бабл-Ти */
+  .item-card,
+  .product-card {
+    width: calc(50% - 10px) !important; /* По 2 карточки в ряд на телефоне */
+    min-width: 140px !important;
+    max-width: 175px !important;
+    padding: 10px !important;
+  }
+
+  .item-image,
+  .card-image {
+    height: 120px !important;           /* Стаканчик компактнее */
+  }
+
+  .item-title,
+  .card-title {
+    font-size: 15px !important;
+  }
+
+  .item-desc,
+  .card-desc {
+    font-size: 11px !important;
+  }
+}
+
+/* Для совсем маленьких экранов (меньше 380px) карточки идут по одной */
+@media (max-width: 380px) {
+  .item-card,
+  .product-card {
+    width: 100% !important;
+    max-width: 240px !important;
+  }
+}
